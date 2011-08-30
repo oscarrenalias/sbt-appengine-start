@@ -1,0 +1,5 @@
+gen-idea for generating idea templates
+embed-jetty for creating a war with an embedded jetty
+package-war for creating a war
+jetty-run to start dev web server
+~prepare-webapp for quick development and code reload
