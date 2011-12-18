@@ -7,7 +7,7 @@
 	<filter>
 		<filter-name>scalatra</filter-name>
 		<filter-class>
-			com.karimson.project.MainScalatraFilter
+			net.renalias.MainScalatraFilter
 		</filter-class>
 	</filter>
 	
