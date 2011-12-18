@@ -2,9 +2,9 @@ import sbt._
 import Keys._
 
 object BuildSettings {
-  val buildOrganization = "com.karimson"
+  val buildOrganization = "net.renalias"
   val buildVersion      = "1.0"
-  val buildScalaVersion = "2.9.0-1"
+  val buildScalaVersion = "2.9.1"
 
   val buildSettings = Defaults.defaultSettings ++ Seq (
     organization := buildOrganization,
@@ -49,7 +49,7 @@ object Resolvers {
 }
 
 object Dependencies {
-  val scalatraVersion = "2.0.0.M4"
+  val scalatraVersion = "2.0.2"
   val logbackVersion = "0.9.25"
   
   val scalatraCore    = "org.scalatra" %% "scalatra"         % scalatraVersion
@@ -64,8 +64,6 @@ object Dependencies {
   val servletApi = "javax.servlet" % "servlet-api" % "2.5" % "provided"
   
   val jacksonJson = "org.codehaus.jackson" % "jackson-core-lgpl" % "1.7.2"
-
-  val scalaTest = "org.scalatest" % "scalatest_2.9.0" % "1.4.1" % "test"
 }
 
 object ProjectBuild extends Build {
@@ -73,12 +71,13 @@ object ProjectBuild extends Build {
   import Dependencies._
   import BuildSettings._
   import com.mojolly.scalate.ScalatePlugin._
+  import sbtappengine.Plugin._
+  import AppengineKeys._
 
   val deps = Seq (
     logbackCore,
     logbackClassic,
     jacksonJson,
-    scalaTest,
     scalatraCore,
     scalatraScalate,
     scalatraAuth,
@@ -90,7 +89,7 @@ object ProjectBuild extends Build {
     "mainProject",
     file ("."),
     settings = buildSettings ++
-               sbtappengine.AppenginePlugin.webSettings ++ scalateSettings ++
+               webSettings ++ scalateSettings ++
                Seq (resolvers := allResolvers, 
                      libraryDependencies ++= deps, 
                      scalateTemplateDirectory in Compile <<= (baseDirectory) { (basedir) => new File(basedir, "src/main/webapp/WEB-INF") }

@@ -1,3 +1,17 @@
-gen-idea for generating idea templates
-appengine:deploy for deploying to app engine
-~prepare-webapp for quick development and code reload
+This is a fork of anvar's sbt-appengine-start, since I couldn't get it to work.
+
+This is a template project for SBT 0.11.2 or newer that provides support for the following:
+
+Google App Engine 1.6.1
+Scalatra
+Scalate
+Specs2
+IntelliJ IDEA Plugin for SBT
+Jetty as the container
+
+Use the following targets:
+
+- gen-idea for generating idea templates
+- container:start to start the Jetty container
+- appengine:deploy for deploying to app engine
+- ~prepare-webapp for quick development and code reload
